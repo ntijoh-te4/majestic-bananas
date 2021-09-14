@@ -3,5 +3,5 @@ html
     head
         title What's Their Face
         link rel="stylesheet" type="text/css" href="/pluggy.css"
-    body
+    body 
     = template

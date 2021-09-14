@@ -1,9 +1,9 @@
 #reuse with changed variable names
 
-defmodule Pluggy.User do
+defmodule Pluggy.User do 
   defstruct(id: nil, username: "")
 
-  alias Pluggy.User
+  alias Pluggy.User 
 
   def get(id) do
     Postgrex.query!(DB, "SELECT id, username FROM users WHERE id = $1 LIMIT 1", [id],

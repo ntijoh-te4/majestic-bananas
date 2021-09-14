@@ -1,5 +1,5 @@
 #reuse with changed variable names
-
+ 
 defmodule Pluggy.UserController do
   # import Pluggy.Template, only: [render: 2] #det här exemplet renderar inga templates
   import Plug.Conn, only: [send_resp: 3]

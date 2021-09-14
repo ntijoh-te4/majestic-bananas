@@ -1,5 +1,5 @@
 #reuse with changed variable names
-
+ 
 defmodule Pluggy.Fruit do
   defstruct(id: nil, name: "", tastiness: "")
 
