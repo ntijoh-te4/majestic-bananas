@@ -1,3 +1,5 @@
+#reuse with changed variable names
+
 defmodule Pluggy.UserController do
   # import Pluggy.Template, only: [render: 2] #det här exemplet renderar inga templates
   import Plug.Conn, only: [send_resp: 3]
@@ -46,3 +48,4 @@ defmodule Pluggy.UserController do
   defp redirect(conn, url),
     do: Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
 end
+

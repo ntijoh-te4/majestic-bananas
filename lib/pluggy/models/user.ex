@@ -1,3 +1,5 @@
+#reuse with changed variable names
+
 defmodule Pluggy.User do
   defstruct(id: nil, username: "")
 

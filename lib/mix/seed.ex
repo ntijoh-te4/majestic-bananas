@@ -1,3 +1,5 @@
+#reuse with changed variable names
+
 defmodule Mix.Tasks.Seed do
   use Mix.Task
 
