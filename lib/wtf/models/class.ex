@@ -2,6 +2,7 @@ defmodule WTF.Class do
     defstruct(class_id: nil, class_name: "", school_id: nil)
 
     alias WTF.Class
+
     def all do
         Postgrex.query!(DB, "SELECT * FROM classes", [], pool: DBConnection.ConnectionPool).rows
     |> to_struct_list
@@ -19,7 +20,7 @@ defmodule WTF.Class do
 
         Postgrex.query!(
           DB,
-          "UPDATE classes SET class_name = $1 WHERE id = $2",
+          "UPDATE classes SET class_name = $1, school_id = $3 WHERE class_id = $2" ,
           [class_name, class_id, school_id],
           pool: DBConnection.ConnectionPool
         )

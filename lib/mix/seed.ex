@@ -28,7 +28,7 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "Create TABLE classes (class_id SERIAL, class_name VARCHAR(255) NOT NULL, school_id SERIAL)", [], pool: DBConnection.ConnectionPool)
 
     IO.puts("Creating student table..")
-    Postgrex.query!(DB, "Create TABLE students (student_id SERIAL, student_name VARCHAR(255) NOT NULL, url VARCHAR(255) NOT NULL, class_id SERIAL, school_id SERIAL)", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "Create TABLE students (student_id SERIAL, student_name VARCHAR(255) NOT NULL, student_url VARCHAR(255) NOT NULL, school_id SERIAL, class_id SERIAL)", [], pool: DBConnection.ConnectionPool)
 
   end
 
@@ -38,8 +38,8 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "INSERT INTO schools(school_name) VALUES($1)", ["LBS"], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO classes(class_name, school_id) VALUES($1, $2)", ["2A", 1], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO classes(class_name, school_id) VALUES($1, $2)", ["SY18", 2], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO students(student_names, url, school_id, class_id) VALUES($1, $2, $3, $4)", ["Axel Axelsson", "https/example.png", 1, 1], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO students(student_names, url, school_id, class_id) VALUES($1, $2, $3, $4)", ["Sven Svensson", "https/hello.png", 2, 1], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students(student_name, student_url, school_id, class_id) VALUES($1, $2, $3, $4)", ["Axel Axelsson", "https/example.png", 1, 1], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO students(student_name, student_url, school_id, class_id) VALUES($1, $2, $3, $4)", ["Sven Svensson", "https/hello.png", 2, 1], pool: DBConnection.ConnectionPool)
   end
 
 end
