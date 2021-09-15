@@ -37,7 +37,7 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "INSERT INTO schools(school_name) VALUES($1)", ["NTI"], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO schools(school_name) VALUES($1)", ["LBS"], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO classes(class_name, school_id) VALUES($1, $2)", ["2A", 1], pool: DBConnection.ConnectionPool)
-    Postgrex.query!(DB, "INSERT INTO classes(class_name, school_id) VALUES($1, $3)", ["SY18", 2], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO classes(class_name, school_id) VALUES($1, $2)", ["SY18", 2], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO students(student_names, url, school_id, class_id) VALUES($1, $2, $3, $4)", ["Axel Axelsson", "https/example.png", 1, 1], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO students(student_names, url, school_id, class_id) VALUES($1, $2, $3, $4)", ["Sven Svensson", "https/hello.png", 2, 1], pool: DBConnection.ConnectionPool)
   end
