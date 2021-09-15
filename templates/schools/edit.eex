@@ -1,0 +1,6 @@
+<h1>Schools.edit (/schools/<%= school.school_id %>/edit)</h1>
+
+<form action="/schools/<%= school.school_id %>/edit" method="post">
+	<input type="text" name="school_name" value="<%= school.school_name %>">
+	<button type=submit>Update</button>
+</form>

@@ -34,19 +34,13 @@ defmodule WTF.Router do
   post("/schools/:id/edit", do: SchoolController.update(conn, id, conn.body_params))
   post("/schools/:id/destroy", do: SchoolController.destroy(conn, id))
 
-  # post("/schools/login", do: UserController.login(conn, conn.body_params))
-  # post("/schools/logout", do: UserController.logout(conn))
-
   # Classes
   get("/classes", do: ClassController.index(conn))
   get("/classes/new", do: ClassController.new(conn))
   get("/classes/:id", do: ClassController.show(conn, id))
   get("/classes/:id/edit", do: ClassController.edit(conn, id))
-
   post("/classes", do: ClassController.create(conn, conn.body_params))
-
   post("/classes/:id/edit", do: ClassController.update(conn, id, conn.body_params))
-
   post("/classes/:id/destroy", do: ClassController.destroy(conn, id))
 
   # Students
@@ -57,6 +51,9 @@ defmodule WTF.Router do
   post("/students", do: StudentController.create(conn, conn.body_params))
   post("/students/:id/edit", do: StudentController.update(conn, id, conn.body_params))
   post("/students/:id/destroy", do: StudentController.destroy(conn, id))
+
+  # post("/schools/login", do: UserController.login(conn, conn.body_params))
+  # post("/schools/logout", do: UserController.logout(conn))
 
   match _ do
     send_resp(conn, 404, "oops")
