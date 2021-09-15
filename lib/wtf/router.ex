@@ -41,8 +41,29 @@ defmodule WTF.Router do
   # post("/schools/logout", do: UserController.logout(conn))
 
   # Classes
+  get("/classes", do: ClassController.index(conn))
+  get("/classes/new", do: ClassController.new(conn))
+  get("/classes/:id", do: ClassController.show(conn, id))
+  get("/classes/:id/edit", do: ClassController.edit(conn, id))
+
+  post("/classes", do: ClassController.create(conn, conn.body_params))
+
+  post("/classes/:id/edit", do: ClassController.update(conn, id, conn.body_params))
+
+  post("/classes/:id/destroy", do: ClassController.destroy(conn, id))
 
   # Students
+  get("/students", do: StudentController.index(conn))
+  get("/students/new", do: StudentController.new(conn))
+  get("/students/:id", do: StudentController.show(conn, id))
+  get("/students/:id/edit", do: StudentController.edit(conn, id))
+
+  post("/students", do: StudentController.create(conn, conn.body_params))
+
+  post("/students/:id/edit", do: StudentController.update(conn, id, conn.body_params))
+
+  post("/students/:id/destroy", do: StudentController.destroy(conn, id))
+
 
   match _ do
     send_resp(conn, 404, "oops")
