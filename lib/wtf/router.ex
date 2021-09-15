@@ -54,18 +54,6 @@ defmodule WTF.Router do
   get("/students/new", do: StudentController.new(conn))
   get("/students/:id", do: StudentController.show(conn, id))
   get("/students/:id/edit", do: StudentController.edit(conn, id))
-
-  post("/students", do: StudentController.create(conn, conn.body_params))
-
-  post("/students/:id/edit", do: StudentController.update(conn, id, conn.body_params))
-
-  post("/students/:id/destroy", do: StudentController.destroy(conn, id))
-
-
-  get("/students", do: StudentController.index(conn))
-  get("/students/new", do: StudentController.new(conn))
-  get("/students/:id", do: StudentController.show(conn, id))
-  get("/students/:id/edit", do: StudentController.edit(conn, id))
   post("/students", do: StudentController.create(conn, conn.body_params))
   post("/students/:id/edit", do: StudentController.update(conn, id, conn.body_params))
   post("/students/:id/destroy", do: StudentController.destroy(conn, id))

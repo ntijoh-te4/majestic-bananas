@@ -33,11 +33,15 @@ defmodule Mix.Tasks.Seed do
   end
 
   defp seed_data() do
-    IO.puts("Seeding data..")
+    IO.puts("Seeding school data..")
     Postgrex.query!(DB, "INSERT INTO schools(school_name) VALUES($1)", ["NTI"], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO schools(school_name) VALUES($1)", ["LBS"], pool: DBConnection.ConnectionPool)
+
+    IO.puts("Seeding class data..")
     Postgrex.query!(DB, "INSERT INTO classes(class_name, school_id) VALUES($1, $2)", ["2A", 1], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO classes(class_name, school_id) VALUES($1, $2)", ["SY18", 2], pool: DBConnection.ConnectionPool)
+
+    IO.puts("Seeding student data..")
     Postgrex.query!(DB, "INSERT INTO students(student_name, student_url, school_id, class_id) VALUES($1, $2, $3, $4)", ["Axel Axelsson", "https/example.png", 1, 1], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO students(student_name, student_url, school_id, class_id) VALUES($1, $2, $3, $4)", ["Sven Svensson", "https/hello.png", 2, 1], pool: DBConnection.ConnectionPool)
   end
