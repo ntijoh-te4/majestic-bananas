@@ -16,7 +16,7 @@ defmodule Pluggy.MixProject do
     [
       applications: [:cowboy, :plug, :postgrex],
       extra_applications: [:logger],
-      mod: {Pluggy, []}
+      mod: {WTF, []}
     ]
   end
 

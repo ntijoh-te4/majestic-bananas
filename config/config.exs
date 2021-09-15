@@ -2,7 +2,7 @@
 # and its dependencies with the aid of the Mix.Config module.
 use Mix.Config
 
-config :pluggy,
+config :wtf,
   db: [
     pool: DBConnection.ConnectionPool,
     pool_size: 4,
