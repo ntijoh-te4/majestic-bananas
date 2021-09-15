@@ -19,8 +19,8 @@ defmodule WTF.StudentController do
   end
 
   def new(conn), do: send_resp(conn, 200, render("students/new", []))
-  def show(conn, id), do: send_resp(conn, 200, render("students/show", students: Student.get(id)))
-  def edit(conn, id), do: send_resp(conn, 200, render("students/edit", students: Student.get(id)))
+  def show(conn, id), do: send_resp(conn, 200, render("students/show", student: Student.get(id)))
+  def edit(conn, id), do: send_resp(conn, 200, render("students/edit", student: Student.get(id)))
 
   def create(conn, params) do
     Student.create(params["student_name"])

@@ -19,8 +19,8 @@ defmodule WTF.ClassController do
   end
 
   def new(conn), do: send_resp(conn, 200, render("classes/new", []))
-  def show(conn, id), do: send_resp(conn, 200, render("classes/show", classes: Class.get(id)))
-  def edit(conn, id), do: send_resp(conn, 200, render("classes/edit", classes: Class.get(id)))
+  def show(conn, id), do: send_resp(conn, 200, render("classes/show", class: Class.get(id)))
+  def edit(conn, id), do: send_resp(conn, 200, render("classes/edit", class: Class.get(id)))
 
   def create(conn, params) do
     Class.create(params["class_name"])

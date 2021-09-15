@@ -1,0 +1,6 @@
+<h1>Students.new (/students/new)</h1>
+
+<form action="/students/" method="post" enctype="multipart/form-data">
+	<input type="text" name="school_name" />
+	<button type=submit>Create student</button>
+</form>

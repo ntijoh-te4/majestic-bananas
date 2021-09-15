@@ -26,16 +26,14 @@ defmodule WTF.Class do
         )
     end
 
-
-
     def create(class_name) do
-        Postgrex.query!(DB, "INSERT INTO class (class_name) VALUES ($1)", [class_name],
+        Postgrex.query!(DB, "INSERT INTO classes (class_name) VALUES ($1)", [class_name],
         pool: DBConnection.ConnectionPool
       )
     end
 
     def delete(class_id) do
-        Postgrex.query!(DB, "DELETE FROM class WHERE class_id = $1", [String.to_integer(class_id)],
+        Postgrex.query!(DB, "DELETE FROM classes WHERE class_id = $1", [String.to_integer(class_id)],
         pool: DBConnection.ConnectionPool
       )
     end

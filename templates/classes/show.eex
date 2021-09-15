@@ -1,0 +1,9 @@
+<h1>Classes.show (/classes/<%= class.class_id %>)</h1>
+
+<h2>
+	<a href="/classes/<%= class.class_id %>/edit"><%= class.class_name %></a>
+	<form action="/classes/<%= class.class_id %>/destroy" method="post">
+		<button type="submit">Destroy Class</button>
+	</form>	
+</h2>
+<p>Name: <%= class.class_name %>

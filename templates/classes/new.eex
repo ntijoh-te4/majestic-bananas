@@ -1,0 +1,6 @@
+<h1>Classes.new (/classes/new)</h1>
+
+<form action="/classes/" method="post" enctype="multipart/form-data">
+	<input type="text" name="class_name" />
+	<button type=submit>Create class</button>
+</form>
