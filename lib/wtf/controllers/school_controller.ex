@@ -21,8 +21,8 @@ defmodule WTF.SchoolController do
   end
 
   def new(conn), do: send_resp(conn, 200, render("schools/new", []))
-  def show(conn, id), do: send_resp(conn, 200, render("schools/show", fruit: School.get(id)))
-  def edit(conn, id), do: send_resp(conn, 200, render("schools/edit", fruit: School.get(id)))
+  def show(conn, id), do: send_resp(conn, 200, render("schools/show", schools: School.get(id)))
+  def edit(conn, id), do: send_resp(conn, 200, render("schools/edit", schools: School.get(id)))
 
   def create(conn, params) do
     School.create(params["school_name"])

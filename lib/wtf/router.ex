@@ -3,6 +3,8 @@ defmodule WTF.Router do
   use Plug.Debugger
 
   alias WTF.SchoolController
+  alias WTF.ClassController
+  alias WTF.StudentController
 
   plug(Plug.Static, at: "/", from: :wtf)
   plug(:put_secret_key_base)
@@ -28,13 +30,8 @@ defmodule WTF.Router do
   get("/schools/new", do: SchoolController.new(conn))
   get("/schools/:id", do: SchoolController.show(conn, id))
   get("/schools/:id/edit", do: SchoolController.edit(conn, id))
-
   post("/schools", do: SchoolController.create(conn, conn.body_params))
-
-  # should be put /fruits/:id, but put/patch/delete are not supported without hidden inputs
   post("/schools/:id/edit", do: SchoolController.update(conn, id, conn.body_params))
-
-  # should be delete /fruits/:id, but put/patch/delete are not supported without hidden inputs
   post("/schools/:id/destroy", do: SchoolController.destroy(conn, id))
 
   # post("/schools/login", do: UserController.login(conn, conn.body_params))
@@ -64,6 +61,14 @@ defmodule WTF.Router do
 
   post("/students/:id/destroy", do: StudentController.destroy(conn, id))
 
+
+  get("/students", do: StudentController.index(conn))
+  get("/students/new", do: StudentController.new(conn))
+  get("/students/:id", do: StudentController.show(conn, id))
+  get("/students/:id/edit", do: StudentController.edit(conn, id))
+  post("/students", do: StudentController.create(conn, conn.body_params))
+  post("/students/:id/edit", do: StudentController.update(conn, id, conn.body_params))
+  post("/students/:id/destroy", do: StudentController.destroy(conn, id))
 
   match _ do
     send_resp(conn, 404, "oops")
