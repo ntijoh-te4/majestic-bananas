@@ -3,7 +3,7 @@ defmodule Pluggy.MixProject do
 
   def project do
     [
-      app: :pluggy,
+      app: :wtf,
       version: "0.3.0",
       elixir: "~> 1.12.3",
       start_permanent: Mix.env() == :prod,

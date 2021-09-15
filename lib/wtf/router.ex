@@ -2,7 +2,7 @@ defmodule WTF.Router do
   use Plug.Router
   use Plug.Debugger
 
-  # alias Pluggy.FruitController
+  alias WTF.SchoolController
 
   plug(Plug.Static, at: "/", from: :wtf)
   plug(:put_secret_key_base)
@@ -22,21 +22,27 @@ defmodule WTF.Router do
   plug(:match)
   plug(:dispatch)
 
-  # get("/fruits", do: FruitController.index(conn))
-  # get("/fruits/new", do: FruitController.new(conn))
-  # get("/fruits/:id", do: FruitController.show(conn, id))
-  # get("/fruits/:id/edit", do: FruitController.edit(conn, id))
+  # Schools
 
-  # post("/fruits", do: FruitController.create(conn, conn.body_params))
+  get("/schools", do: SchoolController.index(conn))
+  get("/schools/new", do: SchoolController.new(conn))
+  get("/schools/:id", do: SchoolController.show(conn, id))
+  get("/schools/:id/edit", do: SchoolController.edit(conn, id))
 
-  # # should be put /fruits/:id, but put/patch/delete are not supported without hidden inputs
-  # post("/fruits/:id/edit", do: FruitController.update(conn, id, conn.body_params))
+  post("/schools", do: SchoolController.create(conn, conn.body_params))
 
-  # # should be delete /fruits/:id, but put/patch/delete are not supported without hidden inputs
-  # post("/fruits/:id/destroy", do: FruitController.destroy(conn, id))
+  # should be put /fruits/:id, but put/patch/delete are not supported without hidden inputs
+  post("/schools/:id/edit", do: SchoolController.update(conn, id, conn.body_params))
 
-  # post("/users/login", do: UserController.login(conn, conn.body_params))
-  # post("/users/logout", do: UserController.logout(conn))
+  # should be delete /fruits/:id, but put/patch/delete are not supported without hidden inputs
+  post("/schools/:id/destroy", do: SchoolController.destroy(conn, id))
+
+  # post("/schools/login", do: UserController.login(conn, conn.body_params))
+  # post("/schools/logout", do: UserController.logout(conn))
+
+  # Classes
+
+  # Students
 
   match _ do
     send_resp(conn, 404, "oops")
