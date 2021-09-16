@@ -6,4 +6,8 @@
 		<button type="submit">Destroy Class</button>
 	</form>	
 </h2>
-<p>Name: <%= class.class_name %>
+<h3>
+	<a href="/schools/<%= class.school_id %>"><%= school.school_name %></a>
+</h3>
+<p>Class Name: <%= class.class_name %></p>
+<p>School Id: <%= class.school_id %></p>

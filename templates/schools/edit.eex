@@ -4,3 +4,19 @@
 	<input type="text" name="school_name" value="<%= school.school_name %>">
 	<button type=submit>Update</button>
 </form>
+
+<ul>
+  <%= for class <- classes do %>
+    <li>
+    	<a href="/classes/<%= class.class_id %>">
+			<%= class.class_name %>
+		</a>
+	</li>
+  <% end %>
+</ul>
+
+<form action="/classes/" method="post" enctype="multipart/form-data">
+	<input type="text" name="class_name" placeholder="Class Name"/>
+	<input type="text" name="school_id" placeholder="School Id" value="<%= school.school_id %>" readonly/>
+	<button type=submit>Create class</button>
+</form>

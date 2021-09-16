@@ -2,5 +2,6 @@
 
 <form action="/classes/<%= class.class_id %>/edit" method="post">
 	<input type="text" name="class_name" value="<%= class.class_name %>">
+	<input type="text" name="school_id" value="<%= class.school_id %>">
 	<button type=submit>Update</button>
 </form>

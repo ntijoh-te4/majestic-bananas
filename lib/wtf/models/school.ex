@@ -9,7 +9,7 @@ defmodule WTF.School do
   end
 
   def get(school_id) do
-    Postgrex.query!(DB, "SELECT * FROM schools WHERE school_id = $1 LIMIT 1", [String.to_integer(school_id)],
+    Postgrex.query!(DB, "SELECT * FROM schools WHERE school_id = $1 LIMIT 1", [if !is_integer(school_id) do String.to_integer(school_id) else school_id end],
       pool: DBConnection.ConnectionPool
     ).rows
     |> to_struct

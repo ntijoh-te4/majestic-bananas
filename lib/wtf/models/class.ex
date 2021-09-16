@@ -4,8 +4,12 @@ defmodule WTF.Class do
     alias WTF.Class
 
     def all do
-        Postgrex.query!(DB, "SELECT * FROM classes", [], pool: DBConnection.ConnectionPool).rows
-    |> to_struct_list
+      Postgrex.query!(DB, "SELECT * FROM classes", [], pool: DBConnection.ConnectionPool).rows
+      |> to_struct_list
+    end
+    def all(school_id) do
+      Postgrex.query!(DB, "SELECT * FROM classes WHERE school_id = #{school_id}", [], pool: DBConnection.ConnectionPool).rows
+      |> to_struct_list
     end
 
     def get(class_id) do
@@ -26,8 +30,8 @@ defmodule WTF.Class do
         )
     end
 
-    def create(class_name) do
-        Postgrex.query!(DB, "INSERT INTO classes (class_name) VALUES ($1)", [class_name],
+    def create(class_name, school_id) do
+        Postgrex.query!(DB, "INSERT INTO classes (class_name, school_id) VALUES ($1, $2)", [class_name, school_id],
         pool: DBConnection.ConnectionPool
       )
     end

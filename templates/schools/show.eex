@@ -7,3 +7,13 @@
 	</form>	
 </h2>
 <p>Name: <%= school.school_name %>
+
+<ul>
+  <%= for class <- classes do %>
+    <li>
+    	<a href="/classes/<%= class.class_id %>">
+			<%= class.class_name %>
+		</a>
+	</li>
+  <% end %>
+</ul>

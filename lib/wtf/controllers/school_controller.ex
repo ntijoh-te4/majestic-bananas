@@ -4,6 +4,7 @@ defmodule WTF.SchoolController do
   require IEx
 
   alias WTF.School
+  alias WTF.Class
   import WTF.Template, only: [render: 2]
   import Plug.Conn, only: [send_resp: 3]
 
@@ -21,8 +22,8 @@ defmodule WTF.SchoolController do
   end
 
   def new(conn), do: send_resp(conn, 200, render("schools/new", []))
-  def show(conn, id), do: send_resp(conn, 200, render("schools/show", school: School.get(id)))
-  def edit(conn, id), do: send_resp(conn, 200, render("schools/edit", school: School.get(id)))
+  def show(conn, id), do: send_resp(conn, 200, render("schools/show", school: School.get(id), classes: Class.all(id)))
+  def edit(conn, id), do: send_resp(conn, 200, render("schools/edit", school: School.get(id), classes: Class.all(id)))
 
   def create(conn, params) do
     School.create(params["school_name"])
