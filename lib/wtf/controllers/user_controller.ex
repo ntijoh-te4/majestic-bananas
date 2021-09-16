@@ -1,5 +1,7 @@
 defmodule WTF.UserController do
-    # import Pluggy.Template, only: [render: 2] #det här exemplet renderar inga templates
+  require IEx  
+  # import Pluggy.Template, only: [render: 2] #det här exemplet renderar inga templates
+    alias WTF.User
     import Plug.Conn, only: [send_resp: 3]
     import WTF.Template, only: [render: 2]
     
@@ -18,9 +20,8 @@ defmodule WTF.UserController do
 
     def login(conn, params) do
       username = params["username"]
-      password = params["pwd"]
-  
-       #Bör antagligen flytta SQL-anropet till user-model (t.ex User.find)
+      password = params["password"]
+
       result =
         Postgrex.query!(DB, "SELECT id, password_hash FROM users WHERE username = $1", [username],
           pool: DBConnection.ConnectionPool
@@ -48,14 +49,25 @@ defmodule WTF.UserController do
       Plug.Conn.configure_session(conn, drop: true) #tömmer sessionen
       |> redirect("/")
     end
+
+    def new(conn), do: send_resp(conn, 200, render("users/new", []))
+    def show(conn, id), do: send_resp(conn, 200, render("users/show", user: Users.get(id)))
+    def edit(conn, id), do: send_resp(conn, 200, render("users/edit", user: Users.get(id)))
   
-    # def create(conn, params) do
-    # 	#pseudocode
-    # 	# in db table users with password_hash CHAR(60)
-    # 	# hashed_password = Bcrypt.hash_pwd_salt(params["password"])
-    #  	# Postgrex.query!(DB, "INSERT INTO users (username, password_hash) VALUES ($1, $2)", [params["username"], hashed_password], [pool: DBConnection.ConnectionPool])
-    #  	# redirect(conn, "/fruits")
-    # end
+    def create(conn, params) do
+      Users.create(params["username", "password", "user_url", "user_admin"])
+      redirect(conn, "/schools")
+    end
+  
+    def update(conn, id, params) do
+      Users.update(id, params["username", "password", "user_url", "user_admin"])
+      redirect(conn, "/schools")
+    end
+  
+    def destroy(conn, id) do
+      Users.delete(id)
+      redirect(conn, "/schools")
+    end
   
     defp redirect(conn, url),
       do: Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
