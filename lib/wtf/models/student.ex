@@ -15,13 +15,13 @@ defmodule WTF.Student do
         |> to_struct
     end
 
-    def update(student_id, student_name, class_id, student_url, school_id) do
+    def update(student_id, student_name, student_url, class_id, student_url, school_id) do
         student_id = String.to_integer(student_id)
 
         Postgrex.query!(
           DB,
-          "UPDATE students SET student_name = $1, class_id = $3, student_url = $4, school_id = $5 WHERE student_id = $2 ",
-          [student_name, student_id, class_id, student_url, school_id],
+          "UPDATE students SET student_name = $2, student_url = $3, school_id = $4, class_id = $5 WHERE student_id = $1",
+          [student_id, student_name, student_url, school_id, class_id],
           pool: DBConnection.ConnectionPool
         )
     end
