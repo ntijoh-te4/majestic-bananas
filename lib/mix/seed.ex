@@ -20,7 +20,7 @@ defmodule Mix.Tasks.Seed do
     Postgrex.query!(DB, "DROP TABLE IF EXISTS students", [], pool: DBConnection.ConnectionPool)
 
     IO.puts("Dropping users table..")
-    ostgrex.query!(DB, "DROP TABLE IF EXISTS users", [], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "DROP TABLE IF EXISTS users", [], pool: DBConnection.ConnectionPool)
   end
 
   defp create_tables() do
@@ -49,9 +49,9 @@ defmodule Mix.Tasks.Seed do
     IO.puts("Seeding student data..")
     Postgrex.query!(DB, "INSERT INTO students(student_name, student_url, school_id, class_id) VALUES($1, $2, $3, $4)", ["Axel Axelsson", "https/example.png", 1, 1], pool: DBConnection.ConnectionPool)
     Postgrex.query!(DB, "INSERT INTO students(student_name, student_url, school_id, class_id) VALUES($1, $2, $3, $4)", ["Sven Svensson", "https/hello.png", 2, 1], pool: DBConnection.ConnectionPool)
-  
+
     IO.puts("Seeding user data..")
-    Postgrex.query!(DB, "INSERT INTO users(username, password, user_url, user_admin) VALUES($1, $2, $3, $4)"), ["admin", "admin", "https/admin.png", true], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO users(username, password, user_url, user_admin) VALUES($1, $2, $3, $4)", ["admin", "admin", "https/admin.png", true], pool: DBConnection.ConnectionPool)
   end
 
 end
