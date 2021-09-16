@@ -38,10 +38,10 @@ defmodule WTF.Student do
       )
     end
 
-    def to_struct([[student_id, student_name, class_id, school_id]]) do
-        %Student{student_id: student_id, student_name: student_name, class_id: class_id, school_id: school_id}
+    def to_struct([[student_id, student_name, student_url, class_id, school_id]]) do
+        %Student{student_id: student_id, student_name: student_name, student_url: student_url, school_id: school_id, class_id: class_id}
     end
     def to_struct_list(rows) do
-        for [student_id, student_name, student_url, class_id, school_id] <- rows, do: %Student{student_id: student_id, student_name: student_name, school_id: school_id, class_id: class_id }
+        for [student_id, student_name, student_url, class_id, school_id] <- rows, do: %Student{student_id: student_id, student_name: student_name, student_url: student_url, school_id: school_id, class_id: class_id }
     end
 end
