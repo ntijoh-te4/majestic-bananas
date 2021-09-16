@@ -1,0 +1,19 @@
+<h1> start page </h1>
+
+<%= if user do %>
+	<form action="/users/logout" method="post">
+		<button type="submit">Log Out</button>
+	</form>
+<% else %>
+<h1> login </h1> 
+<form action="/users/login" method="post">
+	<label for="username">Username</label>
+	<input type="text" name="username" id="username" />
+	<label for="password">Password</lagel>
+	<input type="password" name="pwd" id="password" />
+	<button type="submit">Log In</button>
+</form>
+
+
+
+<% end %>

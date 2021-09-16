@@ -5,6 +5,7 @@ defmodule WTF.Router do
   alias WTF.SchoolController
   alias WTF.ClassController
   alias WTF.StudentController
+  alias WTF.UserController
 
   plug(Plug.Static, at: "/", from: :wtf)
   plug(:put_secret_key_base)
@@ -19,13 +20,14 @@ defmodule WTF.Router do
     secret_key_base: "-- LONG STRING WITH AT LEAST 64 BYTES -- LONG STRING WITH AT LEAST 64 BYTES --"
   )
 
+  
   plug(:fetch_session)
   plug(Plug.Parsers, parsers: [:urlencoded, :multipart])
   plug(:match)
   plug(:dispatch)
-
+  
+  get("/", do: UserController.index(conn))
   # Schools
-
   get("/schools", do: SchoolController.index(conn))
   get("/schools/new", do: SchoolController.new(conn))
   get("/schools/:id", do: SchoolController.show(conn, id))
@@ -52,11 +54,13 @@ defmodule WTF.Router do
   post("/students/:id/edit", do: StudentController.update(conn, id, conn.body_params))
   post("/students/:id/destroy", do: StudentController.destroy(conn, id))
 
-  # post("/schools/login", do: UserController.login(conn, conn.body_params))
-  # post("/schools/logout", do: UserController.logout(conn))
+  post("/login", do: UserController.login(conn, conn.body_params))
+  post("/logout", do: UserController.logout(conn))
+
+ 
 
   match _ do
-    send_resp(conn, 404, "oops")
+    send_resp(conn, 404, "404 error")
   end
 
   defp put_secret_key_base(conn, _) do
