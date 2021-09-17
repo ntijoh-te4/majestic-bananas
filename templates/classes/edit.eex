@@ -5,3 +5,11 @@
 	<input type="text" name="school_id" value="<%= class.school_id %>">
 	<button type=submit>Update</button>
 </form>
+
+<form action="/students/" method="post">
+	<input type="text" name="student_name" placeholder="Student Name"/>
+	<input type="text" name="student_url" placeholder="Student Image URL"/>
+	<input type="text" name="school_id" placeholder="School Id" value="<%= class.school_id %>" readonly/>
+	<input type="text" name="class_id" placeholder="Class Id" value="<%= class.class_id %>" readonly/>
+	<button type=submit>Create student</button>
+</form>

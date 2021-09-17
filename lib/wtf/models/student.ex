@@ -4,8 +4,13 @@ defmodule WTF.Student do
     alias WTF.Student
 
     def all do
-        Postgrex.query!(DB, "SELECT * FROM students", [], pool: DBConnection.ConnectionPool).rows
-    |> to_struct_list
+      Postgrex.query!(DB, "SELECT * FROM students", [], pool: DBConnection.ConnectionPool).rows
+        |> to_struct_list
+    end
+
+    def all(class_id) do
+      Postgrex.query!(DB, "SELECT * FROM students WHERE class_id = $1", [String.to_integer(class_id)], pool: DBConnection.ConnectionPool).rows
+        |> to_struct_list
     end
 
     def get(student_id) do

@@ -1,6 +1,9 @@
 <h1>Students.new (/students/new)</h1>
 
-<form action="/students/" method="post" enctype="multipart/form-data">
-	<input type="text" name="school_name" />
+<form action="/students/" method="post">
+	<input type="text" name="student_name" placeholder="Student Name"/>
+	<input type="text" name="student_url" placeholder="Student Image URL"/>
+	<input type="text" name="school_id" placeholder="School Id"/>
+	<input type="text" name="class_id" placeholder="Class Id"/>
 	<button type=submit>Create student</button>
 </form>

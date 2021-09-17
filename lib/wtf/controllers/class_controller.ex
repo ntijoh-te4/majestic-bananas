@@ -4,6 +4,7 @@ defmodule WTF.ClassController do
   alias WTF.Class
   alias WTF.School
   alias WTF.User
+  alias WTF.Student
   import WTF.Template, only: [render: 2]
   import Plug.Conn, only: [send_resp: 3]
 
@@ -21,8 +22,8 @@ defmodule WTF.ClassController do
   end
 
   def new(conn), do: send_resp(conn, 200, render("classes/new", []))
-  def show(conn, id), do: send_resp(conn, 200, render("classes/show", class: Class.get(id), school: School.get(Class.get(id).school_id)))
-  def edit(conn, id), do: send_resp(conn, 200, render("classes/edit", class: Class.get(id), school: School.get(Class.get(id).school_id)))
+  def show(conn, id), do: send_resp(conn, 200, render("classes/show", class: Class.get(id), school: School.get(Class.get(id).school_id), students: Student.all(id)))
+  def edit(conn, id), do: send_resp(conn, 200, render("classes/edit", class: Class.get(id), school: School.get(Class.get(id).school_id), students: Student.all(id)))
 
   def create(conn, params) do
     Class.create(params["class_name"], String.to_integer(params["school_id"]))

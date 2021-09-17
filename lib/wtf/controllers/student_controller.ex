@@ -24,7 +24,7 @@ defmodule WTF.StudentController do
   def edit(conn, id), do: send_resp(conn, 200, render("students/edit", student: Student.get(id)))
 
   def create(conn, params) do
-    Student.create(params["student_name"])
+    Student.create(params["student_name"], params["student_url"], String.to_integer(params["school_id"]), String.to_integer(params["class_id"]))
     redirect(conn, "/students")
   end
 

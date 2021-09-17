@@ -11,3 +11,13 @@
 </h3>
 <p>Class Name: <%= class.class_name %></p>
 <p>School Id: <%= class.school_id %></p>
+
+<ul>
+  <%= for student <- students do %>
+    <li>
+    	<a href="/students/<%= student.student_id %>">
+			<%= student.student_name %>
+		</a>
+	</li>
+  <% end %>
+</ul>
