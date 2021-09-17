@@ -15,7 +15,7 @@ defmodule WTF.UserController do
           _ -> User.get([session_user])
         end
 
-      send_resp(conn, 200, render("index", user_id: current_user))
+      send_resp(conn, 200, render("index", user: current_user))
     end
 
     def login(conn, params) do
