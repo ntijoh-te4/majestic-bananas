@@ -1,7 +1,7 @@
 <h1> start page </h1>
 
 <%= if user do %>
-	<form action="/" method="post">
+	<form action="/logout" method="post">
 		<button type="submit">Log Out</button>
 	</form>
 <% else %>

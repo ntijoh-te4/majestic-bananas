@@ -1,7 +1,7 @@
 <h1>Classes.index (/classes)</h1>
 
 <%= if user do %>
-	<form action="/users/logout" method="post">
+	<form action="/logout" method="post">
 		<button type="submit">Log Out</button>
 	</form>
 <% else %>
