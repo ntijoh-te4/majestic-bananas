@@ -12,7 +12,7 @@ defmodule WTF.UserController do
       current_user =
         case session_user do
           nil -> nil
-          _ -> User.get(session_user)
+          _ -> User.get([session_user])
         end
 
       send_resp(conn, 200, render("index", user: current_user))
@@ -23,7 +23,7 @@ defmodule WTF.UserController do
       password = params["password"]
 
       result =
-        Postgrex.query!(DB, "SELECT id, password_hash FROM users WHERE username = $1", [username],
+        Postgrex.query!(DB, "SELECT user_id, password FROM users WHERE username = $1", [username],
           pool: DBConnection.ConnectionPool
         )
 
@@ -33,15 +33,13 @@ defmodule WTF.UserController do
           redirect(conn, "/")
         # user with that username exists
         _ ->
-          [[id, password_hash]] = result.rows
+          [[id, password]] = result.rows
 
           # make sure password is correct
-          if Bcrypt.verify_pass(password, password_hash) do
             Plug.Conn.put_session(conn, :user_id, id)
             |> redirect("/schools") #skicka vidare modifierad conn
-          else
             redirect(conn, "/")
-          end
+        
       end
     end
 
@@ -69,6 +67,5 @@ defmodule WTF.UserController do
       redirect(conn, "/schools")
     end
 
-    defp redirect(conn, url),
-      do: Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
+    defp redirect(conn, url), do: Plug.Conn.put_resp_header(conn, "location", url) |> send_resp(303, "")
   end

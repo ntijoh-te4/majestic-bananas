@@ -9,7 +9,7 @@ defmodule WTF.User do
     end
 
     def get(user_id) do
-      Postgrex.query!(DB, "SELECT id, username FROM users WHERE id = $1 LIMIT 1", [user_id],
+      Postgrex.query!(DB, "SELECT user_id, username FROM users WHERE user_id = $1 LIMIT 1", [user_id],
         pool: DBConnection.ConnectionPool
       ).rows
       |> to_struct

@@ -3,6 +3,7 @@
 defmodule WTF.SchoolController do
   require IEx
 
+  alias WTF.User
   alias WTF.School
   alias WTF.Class
   import WTF.Template, only: [render: 2]
