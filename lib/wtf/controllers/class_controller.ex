@@ -3,6 +3,7 @@ defmodule WTF.ClassController do
 
   alias WTF.Class
   alias WTF.School
+  alias WTF.User
   import WTF.Template, only: [render: 2]
   import Plug.Conn, only: [send_resp: 3]
 

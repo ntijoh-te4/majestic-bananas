@@ -23,7 +23,7 @@ defmodule WTF.UserController do
       password = params["password"]
 
       result =
-        Postgrex.query!(DB, "SELECT user_id, password FROM users WHERE username = $1", [username],
+        Postgrex.query!(DB, "SELECT user_id, username, password, user_url, user_admin FROM users WHERE username = $1 LIMIT 1", [username],
           pool: DBConnection.ConnectionPool
         )
 
@@ -33,13 +33,13 @@ defmodule WTF.UserController do
           redirect(conn, "/")
         # user with that username exists
         _ ->
-          [[id, password]] = result.rows
+          [[id, username, password, user_url, user_admin]] = result.rows
 
           # make sure password is correct
             Plug.Conn.put_session(conn, :user_id, id)
             |> redirect("/schools") #skicka vidare modifierad conn
             redirect(conn, "/")
-        
+
       end
     end
 

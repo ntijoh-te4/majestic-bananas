@@ -2,6 +2,7 @@ defmodule WTF.StudentController do
   require IEx
 
   alias WTF.Student
+  alias WTF.User
   import WTF.Template, only: [render: 2]
   import Plug.Conn, only: [send_resp: 3]
 

@@ -2,6 +2,7 @@ defmodule WTF.User do
     defstruct(user_id: nil, username: "", password: "", user_url: "", user_admin: nil)
 
     alias WTF.User
+    alias String.Chars
 
     def all do
       Postgrex.query!(DB, "SELECT * FROM users", [], pool: DBConnection.ConnectionPool).rows
@@ -9,7 +10,7 @@ defmodule WTF.User do
     end
 
     def get(user_id) do
-      Postgrex.query!(DB, "SELECT user_id, username FROM users WHERE user_id = $1 LIMIT 1", [user_id],
+      Postgrex.query!(DB, "SELECT user_id, username, password, user_url, user_admin FROM users WHERE user_id = $1 LIMIT 1", [user_id],
         pool: DBConnection.ConnectionPool
       ).rows
       |> to_struct
