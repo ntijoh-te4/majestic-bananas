@@ -12,7 +12,7 @@ defmodule WTF.UserController do
       current_user =
         case session_user do
           nil -> nil
-          _ -> User.get([session_user])
+          _ -> User.get(session_user)
         end
 
       send_resp(conn, 200, render("index", user: current_user))
