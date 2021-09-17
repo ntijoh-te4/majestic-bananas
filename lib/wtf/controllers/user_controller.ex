@@ -20,7 +20,7 @@ defmodule WTF.UserController do
 
     def login(conn, params) do
       username = params["username"]
-      password = params["password"]
+      password_input = params["password"]
 
       result =
         Postgrex.query!(DB, "SELECT user_id, username, password, user_url, user_admin FROM users WHERE username = $1 LIMIT 1", [username],
@@ -35,10 +35,17 @@ defmodule WTF.UserController do
         _ ->
           [[id, username, password, user_url, user_admin]] = result.rows
 
-          # make sure password is correct
-            Plug.Conn.put_session(conn, :user_id, id)
+
+        IO.puts password
+        IO.puts password_input
+
+        # make sure password is correct
+        if password_input == password do
+          Plug.Conn.put_session(conn, :user_id, id)
             |> redirect("/schools") #skicka vidare modifierad conn
-            redirect(conn, "/")
+        else
+          redirect(conn, "/")
+        end
 
       end
     end
