@@ -17,3 +17,13 @@
 	</li>
   <% end %>
 </ul>
+
+<ul>
+  <%= for user <- users do %>
+    <li>
+    	<a href="/users/<%= user.user_id %>">
+			<%= user.username %>
+		</a>
+	</li>
+  <% end %>
+</ul>

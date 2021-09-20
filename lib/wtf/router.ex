@@ -57,6 +57,14 @@ defmodule WTF.Router do
   post("/login", do: UserController.login(conn, conn.body_params))
   post("/logout", do: UserController.logout(conn))
 
+  
+
+  #teacher side
+  get("teacher/schools", do: SchoolController.index(conn))    
+  get("teacher/classes", do: ClassController.index(conn))
+  get("teacher/students", do: StudentController.index(conn))
+  #get("tracher/game"), do:
+
  
 
   match _ do

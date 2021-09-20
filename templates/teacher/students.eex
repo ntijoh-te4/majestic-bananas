@@ -1,4 +1,4 @@
-<h1>Students.index (/admin/students)</h1>
+<h1>Students.index (/teacher/students)</h1>
 
 <%= if user do %>
 	<form action="/logout" method="post">
@@ -15,8 +15,6 @@
 </form>
 <% end %>
 
-
-
 <ul>
   <%= for student <- students do %>
     <li>
@@ -26,6 +24,3 @@
 	</li>
   <% end %>
 </ul>
-<a href="/students/new">Add new student</a>
-
-

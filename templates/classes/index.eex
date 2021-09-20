@@ -1,4 +1,4 @@
-<h1>Classes.index (/classes)</h1>
+<h1>Classes.index (/admin/classes)</h1>
 
 <%= if user do %>
 	<form action="/logout" method="post">
