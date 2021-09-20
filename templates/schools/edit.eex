@@ -1,5 +1,5 @@
 <h1>Schools.edit (/schools/<%= school.school_id %>/edit)</h1>
-
+<div class="box">
 <form action="/schools/<%= school.school_id %>/edit" method="post">
 	<input type="text" name="school_name" value="<%= school.school_name %>">
 	<button type=submit>Update</button>
@@ -20,3 +20,4 @@
 	<input type="text" name="school_id" placeholder="School Id" value="<%= school.school_id %>" readonly/>
 	<button type=submit>Create class</button>
 </form>
+</div>
