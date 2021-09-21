@@ -2,22 +2,10 @@
 
 <h2>
 	<a href="/users/<%= user.user_id %>/edit"><%= user.username %></a>
-	<form action="/useres/<%= user.user_id %>/destroy" method="post">
-		<button type="submit">Destroy user</button>
+	<form action="/users/<%= user.user_id %>/destroy" method="post">
+		<button type="submit">Destroy Teacher Account</button>
 	</form>	
 </h2>
-<h3>
-	<a href="/schools/<%= class.school_id %>"><%= school.school_name %></a>
-</h3>
-<p>Class Name: <%= class.class_name %></p>
-<p>School Id: <%= class.school_id %></p>
+<p>Teacher: <%= user.username %>
 
-<ul>
-  <%= for user <- users do %>
-    <li>
-    	<a href="/users/<%= user.user_id %>">
-			<%= user.username %>
-		</a>
-	</li>
-  <% end %>
-</ul>
+

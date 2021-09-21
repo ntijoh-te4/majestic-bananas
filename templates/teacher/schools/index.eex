@@ -1,5 +1,4 @@
-
-<h1>Schools.index (/admin/schools)</h1>
+<h1>Schools.index (/teacher/schools)</h1>
 
     <div class="Meny">
         <a class="active" href="#Main">Main</a>
@@ -26,14 +25,3 @@
   <% end %>
 </ul>
 </div>
-
-<div class="box">
-<a href="/schools/new">Add new school</a>
-</div>
-
-
-
-
-
-
-

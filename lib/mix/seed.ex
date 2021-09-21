@@ -52,6 +52,7 @@ defmodule Mix.Tasks.Seed do
 
     IO.puts("Seeding user data..")
     Postgrex.query!(DB, "INSERT INTO users(username, password, user_url, user_admin) VALUES($1, $2, $3, $4)", ["admin", "admin", "https/admin.png", true], pool: DBConnection.ConnectionPool)
+    Postgrex.query!(DB, "INSERT INTO users(username, password, user_url, user_admin) VALUES($1, $2, $3, $4)", ["teacher", "teacher", "https/teacher.png", false], pool: DBConnection.ConnectionPool)
   end
 
 end

@@ -1,4 +1,4 @@
-<h1>Classes.index (/teacher/users)</h1>
+<h1>Users.index (/admin/users)</h1>
 
 <%= if user do %>
 	<form action="/logout" method="post">
@@ -26,4 +26,4 @@
 	</li>
   <% end %>
 </ul>
-<a href="/users/new">Add new class</a>
+
