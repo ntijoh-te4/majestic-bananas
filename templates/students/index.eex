@@ -1,5 +1,9 @@
 <h1>Students.index (/students)</h1>
 
+ <div class="Meny">
+        <a class="active" href="/">Main</a>
+        <a href="/schools">Schools</a>
+		<a href="/game">Game</a>
 <%= if user do %>
 	<form action="/logout" method="post">
 		<button type="submit">Log Out</button>
@@ -14,18 +18,25 @@
 	<button type="submit">Log In</button>
 </form>
 <% end %>
+   </div>
 
 
-
+<div class="schoolgrid">
 <ul>
   <%= for student <- students do %>
-    <li>
+    <div class="schoolbox"> 
+    <h2 id="schoolName">
     	<a href="/students/<%= student.student_id %>">
 			<%= student.student_name %>
 		</a>
-	</li>
+	</h2>
+	</div>
   <% end %>
 </ul>
-<a href="/students/new">Add new student</a>
+<div class="boxaddschool">
+	<h2>
+	<a href="/students/new">Add new student</a>
+	</h2>
+</div>
 
-
+</div>

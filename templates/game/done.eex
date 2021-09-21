@@ -1,6 +1,6 @@
 <div class="game_done">
     <h3> Well done! </h3>
-    <img style="height: 500px;  " src="/dolphin.jpeg"/>
+    <img style="height: 500px;  " src="/images/ironman.jpg"/>
     <div class="done_button">
         <form method="get" action="/students">
             <button class="next" type="submit">Back to students </button>

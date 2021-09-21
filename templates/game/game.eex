@@ -13,9 +13,10 @@
     <%# </div>
     <% end %> 
 <%# </div> %> 
-
+<div class="gamebox">
 <h3>TE4 (NTI Johanneberg)</h3>
-<div class="quiz_names">
+
+ <div class="quiz_names">
     <div class="quiz_image">
         <img style="height: 420px;" src="<%= correct_student.student_url %>"/>
         <h1> <%= counter %> OF <%= student_ammount %> CORRECT</h1>
@@ -59,4 +60,5 @@
             <button class="next" type="submit"> Next </button>
         </form>
     </div>
+ </div>
 </div>

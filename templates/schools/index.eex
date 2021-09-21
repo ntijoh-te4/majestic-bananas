@@ -2,8 +2,9 @@
 <h1>Schools.index (/schools)</h1>
 
     <div class="Meny">
-        <a class="active" href="#Main">Main</a>
-        <a href="">Schools</a>
+        <a class="active" href="/">Main</a>
+        <a href="/schools">Schools</a>
+		<a href="/game">Game</a>
 
 		<%= if user do %>
 	<form class="logoutmenu" action="/logout"  method="post">
