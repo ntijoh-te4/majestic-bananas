@@ -1,0 +1,21 @@
+<h3>TE4 (NTI Johanneberg)</h3>
+<div class="quiz_names">
+    <div class="quiz_image">
+        <img style="height: 420px;" src="<%= correct_student.student_url %>"/>
+        <h1> <%= counter %> OF <%= student_ammount %> CORRECT</h1>
+    </div>
+    <div class="quiz_buttons">
+        <div class="alternative_buttons">
+            <%= for student <- students do %>
+                <form method="post" name="name_guessed" action="/game">
+                    <button class="before_guess_button" name="name_guessed" value="<%= student.student_name %>">
+                        <%= student.student_name %>
+                    </button>
+                </form>
+            <% end %>
+        </div>
+        <form method="get" action="/game">
+            <button class="next" type="submit"> Next </button>
+        </form>
+    </div>
+</div>

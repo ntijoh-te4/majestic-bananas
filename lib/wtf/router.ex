@@ -6,6 +6,7 @@ defmodule WTF.Router do
   alias WTF.ClassController
   alias WTF.StudentController
   alias WTF.UserController
+  alias WTF.GameController
 
   plug(Plug.Static, at: "/", from: :wtf)
   plug(:put_secret_key_base)
@@ -20,12 +21,12 @@ defmodule WTF.Router do
     secret_key_base: "-- LONG STRING WITH AT LEAST 64 BYTES -- LONG STRING WITH AT LEAST 64 BYTES --"
   )
 
-  
+
   plug(:fetch_session)
   plug(Plug.Parsers, parsers: [:urlencoded, :multipart])
   plug(:match)
   plug(:dispatch)
-  
+
   get("/", do: UserController.index(conn))
   # Schools
   get("/schools", do: SchoolController.index(conn))
@@ -81,6 +82,15 @@ defmodule WTF.Router do
   #get("tracher/game"), do:
 
  
+  # Game
+  get("/game", do: GameController.index(conn))
+  get("/game/run", do: GameController.run(conn))
+  get("/game/show_alternatives", do: GameController.show_alternatives(conn))
+  get("/game/done", do: GameController.done(conn))
+
+  post("/game", do: GameController.validate_answer(conn, conn.body_params))
+
+
 
   match _ do
     send_resp(conn, 404, "404 error")

@@ -4,31 +4,36 @@
     <div class="Meny">
         <a class="active" href="#Main">Main</a>
         <a href="">Schools</a>
-      </div>
-	<%= if user do %>
-	<form action="/logout" method="post">
+
+		<%= if user do %>
+	<form class="logoutmenu" action="/logout"  method="post">
 		<button type="submit">Log Out</button>
 	</form>
 
-<% end %>
-<div class="box"> 
+		<% end %>
+      </div>
+	
 
 
 
+<div class="schoolgrid">
 
 <ul>
   <%= for school <- schools do %>
-    <li id="schoolName">
+  <div class="schoolbox"> 
+    <h2 id="schoolName">
     	<a href="/schools/<%= school.school_id %>">
 			<%= school.school_name %>
 		</a>
-	</li>
+	</h2>
+	</div>
   <% end %>
 </ul>
+<div class="boxaddschool">
+	<h2>
+	<a href="/schools/new">Add new school</a>
+	</h2>
 </div>
-
-<div class="box">
-<a href="/schools/new">Add new school</a>
 </div>
 
 
