@@ -1,4 +1,4 @@
-<h1>Classes.show (/admin/classes/<%= class.class_id %>)</h1>
+<h1>Classes.show (/teacher/classes/<%= class.class_id %>)</h1>
 
 <h2>
 	<a href="/classes/<%= class.class_id %>/edit"><%= class.class_name %></a>

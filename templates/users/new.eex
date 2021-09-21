@@ -1,0 +1,7 @@
+<h1>Schools.new (/users/new)</h1>
+
+<form action="/users/" method="post" enctype="multipart/form-data">
+	<input type="text" name="username" />
+	<input type="text" name="password" />
+	<button type=submit>Create Teacher account</button>
+</form>

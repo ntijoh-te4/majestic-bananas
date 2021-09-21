@@ -1,14 +1,12 @@
-<h1>Schools.show (/admin/schools/<%= school.school_id %>)</h1>
+<h1>Schools.show (/teacher/schools/<%= school.school_id %>)</h1>
 <div class="box">
 <h2>
-	<div class="textschool">
 	<a href="/schools/<%= school.school_id %>/edit"><%= school.school_name %></a>
-	</div>
 	<form action="/schools/<%= school.school_id %>/destroy" method="post">
-		<button id="deletebutton" type="submit">Delete School</button>
+		<button type="submit">Destroy School</button>
 	</form>	
 </h2>
-<h2 class="textschool">Classes </h2>
+<p>Name: <%= school.school_name %>
 
 <ul>
   <%= for class <- classes do %>

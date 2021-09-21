@@ -2,6 +2,7 @@ defmodule WTF.UserController do
   require IEx
   # import Pluggy.Template, only: [render: 2] #det här exemplet renderar inga templates
     alias WTF.User
+    alias WTF.School
     import Plug.Conn, only: [send_resp: 3]
     import WTF.Template, only: [render: 2]
 
@@ -41,8 +42,13 @@ defmodule WTF.UserController do
 
         # make sure password is correct
         if password_input == password do
-          Plug.Conn.put_session(conn, :user_id, id)
-            |> redirect("/schools") #skicka vidare modifierad conn
+          cond do
+            user_admin == true ->
+              Plug.Conn.put_session(conn, :user_id, id) |> redirect("/schools")
+            user_admin == false ->
+              Plug.Conn.put_session(conn, :user_id, id) |> redirect("/teacher/schools")
+          end    
+        
         else
           redirect(conn, "/")
         end
@@ -55,9 +61,13 @@ defmodule WTF.UserController do
       |> redirect("/")
     end
 
-    def new(conn), do: send_resp(conn, 200, render("users/new", []))
+    def new(conn), do: send_resp(conn, 200, render("users/new", [])) #if 
     def show(conn, id), do: send_resp(conn, 200, render("users/show", user: Users.get(id)))
     def edit(conn, id), do: send_resp(conn, 200, render("users/edit", user: Users.get(id)))
+
+
+    # def show(conn, id), do: send_resp(conn, 200, render("users/show", user: Users.get(id), School.get(User.get(id).school_id)))
+    # def edit(conn, id), do: send_resp(conn, 200, render("users/edit", user: Users.get(id), School.get(User.get(id).school_id)))
 
     def create(conn, params) do
       User.create(params["username"], params["password"], params["user_url"], params["user_admin"])

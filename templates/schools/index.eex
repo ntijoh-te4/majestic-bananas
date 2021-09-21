@@ -1,5 +1,5 @@
 
-<h1>Schools.index (/schools)</h1>
+<h1>Schools.index (/admin/schools)</h1>
 
     <div class="Meny">
         <a class="active" href="/">Main</a>
@@ -36,6 +36,8 @@
 	</h2>
 </div>
 </div>
+
+
 
 
 

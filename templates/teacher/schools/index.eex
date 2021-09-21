@@ -1,0 +1,27 @@
+<h1>Schools.index (/teacher/schools)</h1>
+
+    <div class="Meny">
+        <a class="active" href="#Main">Main</a>
+        <a href="">Schools</a>
+      </div>
+	<%= if user do %>
+	<form action="/logout" method="post">
+		<button type="submit">Log Out</button>
+	</form>
+
+<% end %>
+<div class="box"> 
+
+
+
+
+<ul>
+  <%= for school <- schools do %>
+    <li id="schoolName">
+    	<a href="/schools/<%= school.school_id %>">
+			<%= school.school_name %>
+		</a>
+	</li>
+  <% end %>
+</ul>
+</div>

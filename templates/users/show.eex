@@ -1,0 +1,11 @@
+<h1>users.show (/users/<%= user.user_id %>)</h1>
+
+<h2>
+	<a href="/users/<%= user.user_id %>/edit"><%= user.username %></a>
+	<form action="/users/<%= user.user_id %>/destroy" method="post">
+		<button type="submit">Destroy Teacher Account</button>
+	</form>	
+</h2>
+<p>Teacher: <%= user.username %>
+
+

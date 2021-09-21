@@ -21,6 +21,20 @@ defmodule WTF.ClassController do
     send_resp(conn, 200, render("classes/index", classes: Class.all(), user: current_user))
   end
 
+  def index_teacher(conn) do
+    # get user if logged in
+    session_user = conn.private.plug_session["user_id"]
+
+    current_user =
+      case session_user do
+        nil -> nil
+        _ -> User.get(session_user)
+      end
+
+    send_resp(conn, 200, render("teacher/classes/index", classes: Class.all(), user: current_user))
+  end
+  def show_teacher(conn, id), do: send_resp(conn, 200, render("teacher/classes/show", class: Class.get(id), school: School.get(Class.get(id).school_id), students: Student.all(id)))
+
   def new(conn), do: send_resp(conn, 200, render("classes/new", []))
   def show(conn, id), do: send_resp(conn, 200, render("classes/show", class: Class.get(id), school: School.get(Class.get(id).school_id), students: Student.all(id)))
   def edit(conn, id), do: send_resp(conn, 200, render("classes/edit", class: Class.get(id), school: School.get(Class.get(id).school_id), students: Student.all(id)))

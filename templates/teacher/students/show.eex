@@ -1,4 +1,4 @@
-<h1>students.show (/admin/students/<%= student.student_id %>)</h1>
+<h1>students.show (/teacher/students/<%= student.student_id %>)</h1>
 
 <h2>
 	<a href="/students/<%= student.student_id %>/edit"><%= student.student_name %></a>
