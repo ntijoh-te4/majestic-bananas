@@ -35,11 +35,11 @@ defmodule WTF.SchoolController do
     send_resp(conn, 200, render("teacher/schools/index", schools: School.all(), user: current_user))
   end
   def show_teacher(conn, id), do: send_resp(conn, 200, render("teacher/schools/show", school: School.get(id), classes: Class.all(id)))
-    
+
 
   def new(conn), do: send_resp(conn, 200, render("schools/new", []))
-  def show(conn, id), do: send_resp(conn, 200, render("schools/show", school: School.get(id), classes: Class.all(id)))
-  def edit(conn, id), do: send_resp(conn, 200, render("schools/edit", school: School.get(id), classes: Class.all(id)))
+  def show(conn, id), do: send_resp(conn, 200, render("schools/show", school: School.get(id), classes: Class.all(id), users: User.all()))
+  def edit(conn, id), do: send_resp(conn, 200, render("schools/edit", school: School.get(id), classes: Class.all(id), users: User.all()))
 
 
 
